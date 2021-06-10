@@ -6,6 +6,12 @@
 % other packages
 \usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
 \usepackage{graphicx,pstricks,listings,stackengine}
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+
+% set bibtex
+\addbibresource{ref.bib}
+\setbeamerfont{footnote}{size=\tiny}
+
 
 \author{Sicun Li}
 \title{Imaging Pipeline Reconfiguration for UAV-Based Correlation Filter Tracking}
@@ -46,6 +52,52 @@
 \end{frame}
 
 \section{Introduction}
+
+\subsection{Object Tracking}
+
+\begin{frame}
+
+    General tracking structure of DCF-based methods onboard the UAV platform\footfullcite{fu2021correlation}:
+
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=0.7\linewidth, trim={100pt 100 100 90}]{fig/tracking_1.pdf}
+        \end{center}
+    \end{figure}
+
+    which can be divided into the \textcolor{deepred}{training stage}, model update, and detection stage.
+
+\end{frame}
+
+\begin{frame}
+
+    \addtocounter{footnote}{-1}
+    General tracking structure of DCF-based methods onboard the UAV platform\footfullcite{fu2021correlation}:
+
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=0.7\linewidth, trim={100pt 100 100 90}]{fig/tracking_2.pdf}
+        \end{center}
+    \end{figure}
+
+    which can be divided into the training stage, \textcolor{deepred}{model update}, and detection stage.
+
+\end{frame}
+
+\begin{frame}
+
+    \addtocounter{footnote}{-1}
+    General tracking structure of DCF-based methods onboard the UAV platform\footfullcite{fu2021correlation}:
+
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=0.7\linewidth, trim={100pt 100 100 90}]{fig/tracking_3.pdf}
+        \end{center}
+    \end{figure}
+
+    which can be divided into the training stage, model update, and \textcolor{deepred}{detection stage}.
+
+\end{frame}
 
 \subsection{Object Tracking System}
 

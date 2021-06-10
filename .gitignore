@@ -5,3 +5,7 @@
 *.snm
 *.synctex.gz
 *.toc
+*-blx.bib
+*.bbl
+*.blg
+*.xml
