@@ -1,5 +1,5 @@
 \documentclass{beamer}
-% \usepackage{ctex}
+\usepackage{ctex}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 
@@ -8,13 +8,19 @@
 \usepackage{graphicx,pstricks,listings,stackengine}
 \usepackage[backend=bibtex,sorting=none]{biblatex}
 
-% set bibtex
+% settings
 \addbibresource{ref.bib}
 \setbeamerfont{footnote}{size=\tiny}
+\ctexset{
+    today=old,
+    figurename=Figure,
+    tablename=Table
+}
 
 
 \author{Sicun Li}
 \title{Imaging Pipeline Reconfiguration for UAV-Based Correlation Filter Tracking}
+\subtitle{面向无人机相关滤波跟踪的成像流水线重构}
 \institute{School of Microelectronics}
 \date{\today}
 \usepackage{dlut}
@@ -91,6 +97,7 @@
 \begin{frame}
 
     \addtocounter{footnote}{-1}
+    \addtocounter{framenumber}{-1}
     General tracking structure of DCF-based methods onboard the UAV platform\footfullcite{fu2021correlation}:
 
     \begin{figure}[htpb]
@@ -106,6 +113,7 @@
 \begin{frame}
 
     \addtocounter{footnote}{-1}
+    \addtocounter{framenumber}{-1}
     General tracking structure of DCF-based methods onboard the UAV platform\footfullcite{fu2021correlation}:
 
     \begin{figure}[htpb]
