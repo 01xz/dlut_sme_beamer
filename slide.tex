@@ -59,14 +59,40 @@
 
 \section{Background \& Motivation}
 
-\subsection{Object Tracking}
+\subsection{Imaging Pipeline}
 
-% A set of figures about tracking
 \begin{frame}
     \begin{figure}[htpb]
         \begin{center}
-            \includegraphics[width=1.0\linewidth]{fig/obt.pdf}
-            \caption{Object Tracking}
+            \includegraphics[width=1.0\linewidth]{fig/isp0.pdf}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=1.0\linewidth]{fig/isp1.pdf}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\subsection{UAV-Based Correlation Filter Tracking}
+
+\begin{frame}
+    Object Tracking:
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=1.0\linewidth]{fig/obt0.pdf}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    Object Tracking:
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=1.0\linewidth]{fig/obt1.pdf}
         \end{center}
     \end{figure}
 \end{frame}
@@ -77,8 +103,6 @@
         \item Discriminative methods: to train a classifier that can distinguish the tracking object from the background.
     \end{itemize}
 \end{frame}
-
-\subsection{Discriminative Correlation Filter based Trackers}
 
 \begin{frame}
 
@@ -129,72 +153,95 @@
 \begin{frame}
     Why DCF is suitable for UAVs:
     \begin{itemize}
-        \item Adaptability: DCF is an online learning method, the tracking model is usually updated once every frame.
-        \item Robustness: The DCF-based method belongs to the discriminative method. It not only learns the object information but also the background information. 
-        \item Efficiency: Most of the operations involved in DCF are element-wise products in the frequency domain.
+        \item \textcolor{red}{Adaptability:} DCF is an online learning method, the tracking model is usually updated once every frame.
+        \item \textcolor{red}{Robustness:} The DCF-based method belongs to the discriminative method. It not only learns the object information but also the background information. 
+        \item \textcolor{red}{Efficiency:} Most of the operations involved in DCF are element-wise products in the frequency domain.
     \end{itemize}
 \end{frame}
 
-\subsection{Object Tracking System}
+\subsection{The Entire System}
 
 \begin{frame}
     \begin{figure}[htpb]
         \begin{center}
-            \includegraphics[width=1.0\linewidth]{fig/block.pdf}
-            \caption{Object Tracking System}
+            \includegraphics[width=1.0\linewidth]{fig/block0.pdf}
         \end{center}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    Today’s continuous vision system is bottlenecked by
-    \begin{itemize}[<+-| alert@+>]
-        \item long end-to-end latency
-        \item and excessive energy consumption of the front-end.
-    \end{itemize}
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=1.0\linewidth]{fig/block1.pdf}
+        \end{center}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
-    Today’s continuous vision system is bottlenecked by
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=1.0\linewidth]{fig/block2.pdf}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=1.0\linewidth]{fig/block3.pdf}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    However, such system is bottlenecked by
     \begin{itemize}
         \item long end-to-end latency
-        \item and excessive energy consumption of the front-end.
+        \item and excessive power consumption of the Front-End.
     \end{itemize}
     \textcolor{red}{It's necessary to optimize the Front-End of the entire system to reduce latency and power consumption\footfullcite{gan2020low}.}
 \end{frame}
 
+\begin{frame}
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=1.0\linewidth]{fig/block4.pdf}
+        \end{center}
+    \end{figure}
+\end{frame}
+
 \subsection{Related Work}
 
-\begin{frame}
+% \begin{frame}
 
-    Zhenhong Liu et al. show that only \textcolor{red}{gamma correction} and \textcolor{red}{demosicking} stages are critical for a \textcolor{red}{face detection} algorithm they adopt\footfullcite{liu2015ultra}.
+%     Zhenhong Liu et al. show that only \textcolor{red}{gamma correction} and \textcolor{red}{demosicking} stages are critical for a \textcolor{red}{face detection} algorithm they adopt\footfullcite{liu2015ultra}.
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}
+% \begin{frame}
     
-    Mark Buckler et al. show that \textcolor{red}{for both CNN-based and classical vision algorithms}, only two ISP stages, \textcolor{red}{demosaicing} and \textcolor{red}{gamma compression}, are critical for task performance.
+%     Mark Buckler et al. show that \textcolor{red}{for both CNN-based and classical vision algorithms}, only two ISP stages, \textcolor{red}{demosaicing} and \textcolor{red}{gamma compression}, are critical for task performance.
     
-    \vspace{0.3in}
+%     \vspace{0.3in}
     
-    They then use a subsampling circuitry and 5-bit logarithmic ADC to approximate the effects of these two ISP stages and can even disable the ISP altogether\footfullcite{buckler2017reconfiguring}.
+%     They then use a subsampling circuitry and 5-bit logarithmic ADC to approximate the effects of these two ISP stages and can even disable the ISP altogether\footfullcite{buckler2017reconfiguring}.
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}
+% \begin{frame}
     
-    Researchers of Intel have proposed VisionISP\footfullcite{wu2019visionisp}, primarily for deep convolutional neural networks, which significantly reduces the bit-number and resolution of images using only noise reduction, tone mapping, and feature perception modules.
+%     Researchers of Intel have proposed VisionISP\footfullcite{wu2019visionisp}, primarily for deep convolutional neural networks, which significantly reduces the bit-number and resolution of images using only noise reduction, tone mapping, and feature perception modules.
     
-    \vspace{0.3in}
+%     \vspace{0.3in}
     
-    Ekdeep Singh Lubana et al. propose an ISP architecture that includes only gamma transform and pixel binning from the perspective of matching intensity distributions, thus reducing the impact on the recognition accuracy of off-the-shelf DNNs\footfullcite{lubana2019minimalistic}.
+%     Ekdeep Singh Lubana et al. propose an ISP architecture that includes only gamma transform and pixel binning from the perspective of matching intensity distributions, thus reducing the impact on the recognition accuracy of off-the-shelf DNNs\footfullcite{lubana2019minimalistic}.
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}
     \begin{itemize}[<+-| alert@+>]
-        \item The above work validates the possibility of reducing the latency and power consumption of the vision front-end in the system by simplifying the ISP architecture with affecting the accuracy of the CV algorithms slightly.
-        \item However, their work only evaluated on a limited range of CV tasks (mainly include CNN-based object classification and detection), and never considered object tracking algorithms.
+        \item A series of work\footfullcite{liu2015ultra}\footfullcite{buckler2017reconfiguring}\footfullcite{wu2019visionisp}\footfullcite{lubana2019minimalistic} validate the possibility of reducing the latency and power consumption of the Front-End of the system by simplifying the ISP architecture without affecting the accuracy of the CV algorithms significantly.
+        \item However, their work only evaluated on a limited range of CV tasks, and never considered object tracking algorithms.
         \item This work will continue their ideas and further investigate the sensitivity of the performance of the DCF-based trackers to the different stages of the imaging pipeline in the UAV scenario.
     \end{itemize}
 \end{frame}
