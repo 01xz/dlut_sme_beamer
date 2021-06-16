@@ -5,7 +5,7 @@
 
 % other packages
 \usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
-\usepackage{graphicx,pstricks,listings,stackengine}
+\usepackage{graphicx,subfigure,pstricks,listings,stackengine}
 \usepackage[backend=bibtex,sorting=none]{biblatex}
 
 % settings
@@ -267,14 +267,46 @@
         \caption{Selected Trackers}
         \label{tab:number}
         \begin{tabular}{ccc}\toprule
-            Name      & Venue     & Features                \\\midrule
-            CN        & CVPR2014  & Grayscale + CN          \\
-            KCF       & TPAMI2015 & fHOG                    \\
-            Staple    & CVPR2016  & fHOG + Color historgram \\
-            ECO-HC    & CVPR2017  & fHOG + CN               \\
-            AutoTrack & CVPR2020  & fHOG + CN + Grayscale   \\\bottomrule
+            Name                                      & Venue     & Features                \\\midrule
+            CN\footfullcite{danelljan2014adaptive}    & CVPR2014  & Grayscale + CN          \\
+            KCF\footfullcite{henriques2014high}       & TPAMI2015 & fHOG                    \\
+            Staple\footfullcite{bertinetto2016staple} & CVPR2016  & fHOG + Color historgram \\
+            ECO\_HC\footfullcite{danelljan2017eco}     & CVPR2017  & fHOG + CN               \\
+            AutoTrack\footfullcite{li2020autotrack}   & CVPR2020  & fHOG + CN + Grayscale   \\\bottomrule
         \end{tabular}
     \end{table}
+\end{frame}
+
+\subsection{Evaluation}
+
+% PRE & AUC
+\begin{frame}
+    \begin{figure}[htpb]
+        \centering
+        \subfigure{\includegraphics[width=0.5\linewidth]{fig/CLE.pdf}}
+        \hspace{0pt}
+        \subfigure{\includegraphics[width=0.4\linewidth]{fig/pre.png}}
+        \caption{CLE \& Precision Plot}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[htpb]
+        \centering
+        \subfigure{\includegraphics[width=0.5\linewidth]{fig/OS.pdf}}
+        \hspace{0pt}
+        \subfigure{\includegraphics[width=0.4\linewidth]{fig/auc.png}}
+        \caption{OS \& Success Plot}
+    \end{figure}
+\end{frame}
+
+% VisDrone-SOT-Toolkit
+\begin{frame}
+    \begin{itemize}[<+-| alert@+>]
+        \item Under one-pass evaluation (OPE) in VisDrone-SOT-Toolkit
+        \item Using the precision score at threshold = 20
+        \item and the area under curve (AUC) of each success plot
+    \end{itemize}
 \end{frame}
 
 \subsection{Imaging Pipeline Simulation Tool}
@@ -311,54 +343,6 @@
     \end{figure}
 \end{frame}
 
-\subsection{Evaluation}
-
-% PRE & AUC
-\begin{frame}
-    \begin{figure}[htpb]
-        \begin{center}
-            \includegraphics[width=0.8\linewidth]{fig/CLE.pdf}
-            \caption{Definition of CLE}
-        \end{center}
-    \end{figure}
-\end{frame}
-
-\begin{frame}
-    \begin{figure}[htpb]
-        \begin{center}
-            \includegraphics[width=0.8\linewidth]{fig/pre.png}
-            \caption{Precision Plot}
-        \end{center}
-    \end{figure}
-\end{frame}
-
-\begin{frame}
-    \begin{figure}[htpb]
-        \begin{center}
-            \includegraphics[width=0.8\linewidth]{fig/OS.pdf}
-            \caption{Definition of OS}
-        \end{center}
-    \end{figure}
-\end{frame}
-
-\begin{frame}
-    \begin{figure}[htpb]
-        \begin{center}
-            \includegraphics[width=0.8\linewidth]{fig/auc.png}
-            \caption{Success Plot}
-        \end{center}
-    \end{figure}
-\end{frame}
-
-% VisDrone-SOT-Toolkit
-\begin{frame}
-    \begin{itemize}[<+-| alert@+>]
-        \item Under one-pass evaluation (OPE)
-        \item Using the precision score at threshold = 20
-        \item and the area under curve (AUC) of each success plot
-    \end{itemize}
-\end{frame}
-
 \subsection{Results}
 
 \begin{frame}
@@ -380,28 +364,32 @@
 \end{frame}
 
 \begin{frame}
-    \begin{figure}[htpb]
-        \begin{center}
-            \includegraphics[width=0.7\linewidth]{fig/mini.pdf}
-            \caption{Minimal ISP with only two stages}
-        \end{center}
-    \end{figure}
-\end{frame}
-
-\begin{frame}
     \begin{itemize}[<+-| alert@+>]
         \item Only the demosaicing has the greatest impact on the algorithm performance, followed by the gamma transform.
         \item The demosaicing stage will smooth the noise, resulting in a denoising effect\footfullcite{lubana2019minimalistic}.
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    Proposed imaging pipeling with only two stages (demosaicing \& gamma compression):
+
+    \begin{figure}[htpb]
+        \begin{center}
+            \includegraphics[width=0.6\linewidth]{fig/mini.pdf}
+        \end{center}
+    \end{figure}
+
+    keeps the trackers with similar performance.
+
+\end{frame}
+
 \subsection{Ideas of ISP Designing}
 
 \begin{frame}
+    Using Subsampling to approximate Demosaicing:
     \begin{figure}[htpb]
         \begin{center}
-            \includegraphics[width=0.8\linewidth]{fig/isp_dem_1.pdf}
-            \caption{Use Subsampling to approximate Demosaicing}
+            \includegraphics[width=0.6\linewidth]{fig/isp_dem_1.pdf}
         \end{center}
     \end{figure}
 \end{frame}
@@ -416,19 +404,20 @@
 \end{frame}
 
 \begin{frame}
+    Using low bit depth:
     \begin{figure}[htpb]
         \begin{center}
-            \includegraphics[width=0.8\linewidth]{fig/bits.pdf}
-            \caption{Logarithmic quantization}
+            \includegraphics[width=0.75\linewidth]{fig/bits.pdf}
+            \caption{Effect of quantization on performance}
         \end{center}
     \end{figure}
 \end{frame}
 
 \begin{frame}
+    Adaptive Sampling:
     \begin{figure}[htpb]
         \begin{center}
             \includegraphics[width=0.7\linewidth]{fig/ad_s.pdf}
-            \caption{Adaptive Sampling}
         \end{center}
     \end{figure}
 \end{frame}
@@ -448,7 +437,7 @@
 \begin{frame}
     \begin{itemize}[<+-| alert@+>]
         \item Limitation: only a limited dataset and tracking algorithm were tested, and the proposed ideas of ISP designing are not tested in hardware.
-        \item Future Work: We will use more datasets and trackers to verify the above conclusions, and will design corresponding hardware implementations for testing.
+        \item Future Work: I will further improve the experiment, and investigate the theoretical basis for the experimental phenomenon.
     \end{itemize}
 \end{frame}
 
